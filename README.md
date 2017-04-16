@@ -22,7 +22,7 @@ By looking at the code, we could see that the op codes for the operators defined
 
 And every instruction generated was 4 bytes as well. The fact that it was like this and that the program was crashing on my machine which has an Intel processor probably meant that it was targetting an ARM system.
 
-I quickly wrote a disassembler script leveraging the capstone framework to diassemble the values put inside the code section in order to confirm this:
+I quickly wrote a disassembler script leveraging the capstone framework to disassemble the values put inside the code section in order to confirm this:
 
 ```python
 from capstone import *
@@ -30,8 +30,8 @@ from capstone import *
 md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
 
 def print_disass(c):
-    for i in md.disasm(c, 0x0):
-			print hex(i.address), i.mnemonic, i.op_str
+	for i in md.disasm(c, 0x0):
+		print hex(i.address), i.mnemonic, i.op_str
 
 print_disass("\xf8\x0f\x9f\xe5") #first dword
 print_disass("\xfc\x1f\x9f\xe5") #load 1
